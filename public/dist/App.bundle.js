@@ -711,7 +711,7 @@ exports.Dir = exports.DEVELOPER_URL = exports.DEVELOPER_NAME = exports.SITE_URL 
 var _path = __webpack_require__(34);
 
 var DEV_PATH = exports.DEV_PATH = __dirname;
-var PUBLIC_PATH = exports.PUBLIC_PATH = '/';
+var PUBLIC_PATH = exports.PUBLIC_PATH = '/dang-thats-delectable/';
 
 var SITE_TITLE = exports.SITE_TITLE = 'Dang That\'s Delectable!';
 var SITE_NAME = exports.SITE_NAME = 'dang-thats-delectable';
@@ -1088,6 +1088,8 @@ var _config = __webpack_require__(5);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+console.log(_config.PUBLIC_PATH);
+
 var mapOptions = {
     center: {
         lng: -79.842,
@@ -1171,6 +1173,7 @@ function _loadPlaces(map, lng, lat) {
     }
 
     return new Promise(function (resolve, reject) {
+        console.log(_config.PUBLIC_PATH);
         _axios2.default.get(_config.PUBLIC_PATH + 'api/stores/near?lng=' + (lng || -79.842) + '&lat=' + (lat || 43.251)).then(function (res) {
             resolve(res.data);
         }).catch(console.error);
