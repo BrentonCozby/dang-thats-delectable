@@ -1,0 +1,33 @@
+<% if(!store) { var store = {} }%>
+
+<% const formAction = store._id ? `update/${store._id}` : 'add' %>
+
+<form class="card" action="<%= c.PUBLIC_PATH + formAction %>" method="POST" enctype="multipart/form-data">
+    <label for="name">Name</label>
+    <input type="text" name="name" value="<%= store.name %>" required autofocus>
+    <label for="description">Description</label>
+    <textarea name="description"><%= store.description %></textarea>
+    <label for="photo">Photo</label>
+    <input type="file" name="photo" accept="image/*" id="photo">
+    <% if(store.photo) { %>
+    <img src="/uploads/<%= store.photo %>" alt="<%= store.name %>" width="200">
+    <% } %>
+    <label for="address">Address</label>
+    <!-- location[address] only works in express -->
+    <input type="text" id="address" name="location[address]" value="<%= store.location && store.location.address %>">
+    <label for="lng">Longitude</label>
+    <input type="text" id="lng" name="location[coordinates][0]" value="<%= store.location && store.location.coordinates[0] %>" required>
+    <label for="lat">Latitude</label>
+    <input type="text" id="lat" name="location[coordinates][1]" value="<%= store.location && store.location.coordinates[1] %>" required>
+    <% const choices = ['Wifi', 'Open Late', 'Family Friendly', 'Vegetarian', 'Licensed'] %>
+    <% const tags = store.tags || [] %>
+    <ul class="tags">
+        <% choices.forEach(choice => { %>
+            <li class="tag tag__choice">
+                <input type="checkbox" id="<%= choice %>" value="<%= choice %>" name="tags" <%= tags.includes(choice) ? 'checked' : '' %> />
+                <label for="<%= choice %>"><%= choice %></label>
+            </li>
+        <% }) %>
+    </ul>
+    <input type="submit" value="Save →" class="button">
+</form>

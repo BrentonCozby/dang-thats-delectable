@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('components/head') %>
+<body>
+    <%- include('components/header') %>
+
+    <main>
+        <%- include('components/messages') %>
+        <h2>Map</h2>
+        <div class="map">
+            <div class="autocomplete">
+                <input type="text" class="autocomplete__input" placeholder="Search for anything" name="geolocate">
+                <div id="map">
+                    <p>Loading map...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <%- include('components/bottom') %>
+</body>
+</html>

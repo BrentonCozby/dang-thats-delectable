@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('components/head') %>
+<body>
+    <%- include('components/header') %>
+
+    <div class="single">
+        <div class="single__hero">
+            <img src="/uploads/<%= store.photo || 'store.png' %>" alt="<%= store.name %>" class="single__image">
+            <h2 class="title title--single">
+                <a href="/stores/<%= store.slug %>"><%= store.name %></a>
+            </h2>
+        </div>
+    </div>
+    <%- include('components/messages') %>
+    <main>
+        <div class="single__details inner">
+            <img src="<%= h.staticMap(store.location.coordinates) %>" alt="" class="single__map">
+            <p class="single__location"><%= store.location.address %></p>
+            <p class="description"><%- store.description %></p>
+            <% if(store.tags) { %>
+            <ul class="tags">
+                <% store.tags.forEach(tag => { %>
+                <li class="tag">
+                    <a href='/tags/<%= tag %>' class="tag__link">
+                        <span class="tag__text"><%= tag %></span>
+                    </a>
+                </li>
+                <% }) %>
+            </ul>
+            <% } %>
+            <% if(store.reviews && store.reviews.length) { %>
+            <div class="reviews">
+                <% store.reviews.forEach(review => { %>
+                <div class="review">
+                    <%- include('components/review', {review}) %>
+                </div>
+                <% }) %>
+            </div>
+            <% } %>
+            <% if(user) { %>
+            <%- include('components/reviewForm', {store}) %>
+            <% } %>
+        </div>
+    </main>
+
+    <%- include('components/bottom') %>
+</body>
+</html>

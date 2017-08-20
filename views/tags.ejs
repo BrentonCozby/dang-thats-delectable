@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('components/head') %>
+<body>
+    <%- include('components/header') %>
+
+    <main>
+        <%- include('components/messages') %>
+        <h2><%= activeTag || 'Tags' %></h2>
+        <ul class="tags">
+            <% tags && tags.forEach(tag => { %>
+            <li class="tag">
+                <a href="/tags/<%= tag._id %>" class="tag__link <%= (activeTag === tag._id) ? 'tag__link--active' : '' %>">
+                    <span class="tag__text"><%= tag._id %></span>
+                    <span class="tag__count"><%= tag.count %></span>
+                </a>
+            </li>
+            <% }) %>
+        </ul>
+        <div class="stores">
+            <% stores && stores.forEach(store => { %>
+            <%- include('components/storeCard.ejs', {store}) %>
+            <% }) %>
+        </div>
+    </main>
+
+    <%- include('components/bottom') %>
+</body>
+</html>

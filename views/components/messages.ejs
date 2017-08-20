@@ -1,0 +1,17 @@
+<% if(flashes) { %>
+<% const categories = Object.keys(flashes); %>
+
+<div class="flash-messages">
+<% categories.forEach(category => { %>
+    <% flashes[category].forEach(message => { %>
+        <div class="flash <%= `flash--${category}` %>">
+            <p class="flash__text">
+                <%- message %>
+            </p>
+            <button class="flash__remove" onClick="this.parentElement.remove()">&times;</button>
+        </div>
+    <% }); %>
+<% }); %>
+</div>
+
+<% } %>

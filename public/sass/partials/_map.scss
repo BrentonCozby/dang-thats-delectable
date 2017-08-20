@@ -1,0 +1,31 @@
+.map {
+  padding: 20px;
+  background: white;
+  box-shadow: $shad;
+}
+
+#map {
+  height: 500px;
+}
+
+.popup {
+  max-width: 280px;
+  margin-top: 4px;
+
+  img {
+    width: 100%;
+    border-radius: 2px;
+  }
+
+  .name {
+    font-size: 2rem;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .address {
+    font-size: 1.2rem;
+    margin: .5rem 0 0;
+    line-height: 1.4;
+  }
+}

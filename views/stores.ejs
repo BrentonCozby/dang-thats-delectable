@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('components/head') -%>
+<body>
+    <%- include('components/header') -%>
+
+    <main>
+        <%- include('components/messages') -%>
+        <h1>Stores</h1>
+        <div class="stores">
+            <% stores && stores.forEach(store => { %>
+                <%- include('components/storeCard', {store}) -%>
+            <% }) %>
+        </div>
+        <%- include('components/pagination', {page, pages, count}) %>
+    </main>
+
+    <%- include('components/bottom') -%>
+</body>
+</html>

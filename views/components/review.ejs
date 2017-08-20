@@ -1,0 +1,15 @@
+<div class="review__header">
+    <div class="review__author">
+        <img src="<%= review.author.gravatar %>" alt="<%= review.author.name %>" class="avatar">
+        <p><%= review.author.name %></p>
+    </div>
+    <div class="review__stars" title="Rated <%= review.rating %> out of 5 stars">
+        <%= '★'.repeat(review.rating) %><%= '☆'.repeat(5 - review.rating) %>
+    </div>
+    <time class="review__time" datetime="<%= review.created %>">
+        <%= h.moment(review.created).fromNow() %>
+    </time>
+</div>
+<div class="review__body">
+    <p><%= review.text %></p>
+</div>

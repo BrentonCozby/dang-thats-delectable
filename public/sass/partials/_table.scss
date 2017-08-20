@@ -1,0 +1,19 @@
+.table {
+  width: 100%;
+  td {
+    padding: 5px;
+  }
+  td a {
+    border-bottom: 2px solid $yellow;
+  }
+  tr:nth-child(even) {
+    background: white;
+  }
+  tr:nth-child(odd):not(:first-child) {
+    background: #f7f7f7;
+  }
+  thead tr {
+    background: $black;
+    color: white;
+  }
+}

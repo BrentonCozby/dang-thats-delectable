@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('components/head') %>
+<body>
+    <%- include('components/header') %>
+    
+    <main>
+        <%- include('components/messages') %>
+        <form method="POST" class="form">
+            <h2>Reset Your Password</h2>
+            <label for="password">Password</label>
+            <input type="password" name="password">
+            <label for="password-confirm">Confirm Your Password</label>
+            <input type="password" name="password-confirm">
+            <input type="submit" class="button" value="Reset Password →">
+        </form>
+    </main>
+
+    <%- include('components/bottom') %>
+</body>
+</html>

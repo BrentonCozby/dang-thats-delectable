@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('components/head') %>
+<body>
+    <%- include('components/header') %>
+
+    <main>
+        <%- include('components/messages') %>
+        <h2>Top <%= stores.length %> Stores</h2>
+        <table class="table">
+            <thead>
+                <td>Photo</td>
+                <td>Ranking</td>
+                <td>Name</td>
+                <td>Reviews</td>
+                <td>Average Rating</td>
+            </thead>
+            <% stores.forEach((store, i) => { %>
+            <tr>
+                <td>
+                    <a href="/stores/<%= store.slug %>">
+                        <img src="/uploads/<%= store.photo || 'store.png' %>" width="200" alt="<%= store.name %>">
+                    </a>
+                </td>
+                <td><%= i + 1 %></td>
+                <td><a href="/stores/<%= store.slug %>"><%= store.name %></a></td>
+                <td><%= store.reviews.length %></td>
+                <td><%= Math.round( store.averageRating * 10 ) / 10 %> out of 5</td>
+            </tr>
+            <% }) %>
+        </table>
+    </main>
+
+    <%- include('components/bottom') %>
+</body>
+</html>

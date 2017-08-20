@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('components/head') %>
+<body>
+    <%- include('components/header') %>
+
+    <main>
+        <%- include('components/messages') %>
+        <form action="/register" method="POST" class="form">
+            <h2>Register</h2>
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name"  autofocus>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" >
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" >
+            <label for="password-confirm">Confirm Password</label>
+            <input type="password" name="password-confirm" id="password-confirm" >
+            <input type="submit" value="Register →" class="button">
+        </form>
+    </main>
+
+    <%- include('components/bottom') %>
+</body>
+</html>

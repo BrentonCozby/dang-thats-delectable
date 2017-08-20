@@ -1,0 +1,72 @@
+<header class="top">
+    <nav class="nav">
+
+        <div class="nav__section nav__section--pages">
+            <li class="nav__item">
+                <a href="<%= c.PUBLIC_PATH %>" class="nav__link nav__link--logo">
+                    <%- h.icon('logo') %>
+                </a>
+            <% for(let i = 0; i < h.menu.length; i++) { %>
+
+                <li class="nav__item">
+                    <a href="<%= h.menu[i].slug %>" class="nav__link <%= currentPath.startsWith(h.menu[i].slug) ? 'nav__link--active' : ''; %>">
+                        <%- h.icon(h.menu[i].icon) %>
+                        <span><%= h.menu[i].title %></span>
+                    </a>
+                </li>
+
+            <% } %>
+            </li>
+        </div>
+
+        <div class="nav__section nav__section--search">
+            <div class="search">
+                <input type="text" placeholder="Coffee, beer..." name="search" class="search__input">
+                <div class="search__results"></div>
+            </div>
+        </div>
+
+        <div class="nav__section nav__section--user">
+        <% if(user) { %>
+
+            <li class="nav__item">
+                <a href="<%= c.PUBLIC_PATH %>likes" class="nav__link <%= currentPath.startsWith('/likes') ? 'nav__link--active' : '' %>">
+                    <%- h.icon('like'); %>
+                    <span class="like-count">
+                        <%= (user.likes) ? user.likes.length : '' %>
+                    </span>
+                </a>
+            </li>
+
+            <li class="nav__item">
+                <a href="<%= c.PUBLIC_PATH %>logout" class="nav__link <%= currentPath.startsWith('/logout') ? 'nav__link--active' : '' %>">
+                    <%- h.icon('logout') %>
+                    <span>
+                        Logout
+                    </span>
+                </a>
+            </li>
+
+            <li class="nav__item">
+                <a href="<%= c.PUBLIC_PATH %>account" class="nav__link <%= currentPath.startsWith('/account') ? 'nav__link--active' : '' %>">
+                    <img src="<%= user.gravatar %>" alt="<%= user.name %>" class="avatar">
+                </a>
+            </li>
+
+        <% } else { %>
+
+            <li class="nav__item">
+                <a href="/register" class="nav__link <%= currentPath.startsWith('/register') ? 'nav__link--active' : '' %>">
+                    Register
+                </a>
+            </li>
+            <li class="nav__item">
+                <a href="/login" class="nav__link <%= currentPath.startsWith('/login') ? 'nav__link--active' : '' %>">
+                    Log In
+                </a>
+            </li>
+
+        <% } %>
+        </div>
+    </nav>
+</header>

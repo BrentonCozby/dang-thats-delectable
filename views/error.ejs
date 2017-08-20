@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include(`components/head`, { title: 'Error' }); %>
+<body>
+    <%- include(`components/header`); %>
+
+    <main>
+        <%- include(`components/messages`); %>
+        <h1><%= status %> Error</h1>
+        <p><%= message %></p>
+        <pre><%= stackHighlighted %></pre>
+    </main>
+
+    <%- include(`components/bottom`); %>
+</body>
+</html>
