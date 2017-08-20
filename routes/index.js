@@ -52,6 +52,10 @@ router.get('/likes',
     authController.isLoggedIn,
     catchErrors(storeController.getLikes)
 )
+router.get('/likes/page/:page',
+    authController.isLoggedIn,
+    catchErrors(storeController.getLikes)
+)
 router.post('/reviews/:id',
     authController.isLoggedIn,
     catchErrors(reviewController.addReview)

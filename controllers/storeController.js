@@ -82,7 +82,7 @@ export async function getStores(req, res) {
         res.redirect(`/stores/page/${pages}`)
     }
 
-    res.render('stores', {title: 'Stores', stores, page, pages, count })
+    res.render('stores', {title: 'Stores', stores, page, pages, count, path: 'stores' })
 }
 
 export async function getStoreBySlug(req, res, next) {
@@ -199,9 +199,35 @@ export async function likesStore (req, res) {
 }
 
 export async function getLikes (req, res) {
-    const likedStores = await Store.find({_id: { $in: req.user.likes }})
+    const page = req.params.page || 1
+    const limit = 6
+    const skip = (page * limit) - limit
+    
+    const storesPromise = Store
+        .find({_id: { $in: req.user.likes }})
+        .skip(skip)
+        .limit(limit)
+        .sort({created: 'desc'})
 
-    res.render('stores', {title: 'Liked Stores', stores: likedStores })
+    const countPromise = Promise.resolve(req.user.likes.length)
+
+    const [likedStores, count] = await Promise.all([storesPromise, countPromise])
+
+    const pages = Math.ceil(count / limit)
+
+    if(!likedStores.length && skip) {
+        req.flash('info', `You asked for page ${page}, but it doesn't exist! So we've put you on the last page.`)
+        res.redirect(`/likes/page/${pages}`)
+    }
+
+    res.render('stores', {
+        title: 'Liked Stores',
+        stores: likedStores,
+        page,
+        pages,
+        count,
+        path: 'likes'
+    })
 }
 
 export async function getTopStores (req, res) {

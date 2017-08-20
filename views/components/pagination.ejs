@@ -2,7 +2,7 @@
 <div class="pagination">
     <div class="pagination__prev">
     <% if(page > 1) { %>
-        <a href="/stores/page/<%= parseInt(page) - 1 %>">Prev</a>
+        <a href="/<%= path %>/page/<%= parseInt(page) - 1 %>">Prev</a>
     <% } %>
     </div>
     <div class="pagination__text">
@@ -10,7 +10,7 @@
     </div>
     <div class="pagination__next">
     <% if(page < pages) { %>
-        <a href="/stores/page/<%= parseInt(page) + 1 %>">Next</a>
+        <a href="/<%= path %>/page/<%= parseInt(page) + 1 %>">Next</a>
     <% } %>
     </div>
 </div>
