@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { $ } from './bling.js'
 import { PUBLIC_PATH } from '../../../config.js'
-console.log(PUBLIC_PATH)
 
 const mapOptions = {
     center: {
@@ -93,7 +92,6 @@ function _loadPlaces (map, lng, lat) {
     }
 
     return new Promise((resolve, reject) => {
-        console.log(PUBLIC_PATH)
         axios
             .get(`${PUBLIC_PATH}api/stores/near?lng=${lng || -79.842}&lat=${lat || 43.251}`)
             .then(res => {
