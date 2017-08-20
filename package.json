@@ -9,7 +9,7 @@
     "dotenv": "variables.env.now"
   },
   "scripts": {
-    "start": "babel-node ./start.js",
+    "start": "babel-node ./start.js NODE_ENV=\"production\"",
     "watch": "nodemon ./start.js --ignore public/ --exec babel-node",
     "dev": "concurrently \"npm run watch\" \"npm run assets\" --names \"💻,📦\" --prefix name",
     "assets": "webpack -w --display-max-modules 0",
