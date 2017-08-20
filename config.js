@@ -11,16 +11,14 @@ export const DEVELOPER_NAME = 'Brenton Cozby'
 export const DEVELOPER_URL = 'https://brentoncozby.com'
 
 const Dir = {
-    dist: resolve(__dirname, 'dist'),
-    src: resolve(__dirname, 'src'),
-    css: resolve(__dirname, 'src', 'css'),
-    js: resolve(__dirname, 'src', 'js'),
-    misc: resolve(__dirname, 'src', 'misc'),
-    images: resolve(__dirname, 'src', 'images'),
-    vendor: resolve(__dirname, 'src', 'vendor'),
-    views: resolve(__dirname, 'src', 'views'),
-    pages: resolve(__dirname, 'src', 'views', 'pages'),
-    partials: resolve(__dirname, 'src', 'views', 'partials'),
+    root: __dirname,
+    controllers: resolve(__dirname, 'controllers'),
+    data: resolve(__dirname, 'data'),
+    handlers: resolve(__dirname, 'handlers'),
+    models: resolve(__dirname, 'models'),
+    images: resolve(__dirname, 'public', 'images'),
+    routes: resolve(__dirname, 'routes'),
+    views: resolve(__dirname, 'views')
 }
 
 export { Dir }
