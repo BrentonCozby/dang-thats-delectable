@@ -711,7 +711,7 @@ exports.Dir = exports.DEVELOPER_URL = exports.DEVELOPER_NAME = exports.SITE_URL 
 var _path = __webpack_require__(34);
 
 var DEV_PATH = exports.DEV_PATH = __dirname;
-var PUBLIC_PATH = exports.PUBLIC_PATH = '/dang-thats-delectable/';
+var PUBLIC_PATH = exports.PUBLIC_PATH = '/';
 
 var SITE_TITLE = exports.SITE_TITLE = 'Dang That\'s Delectable!';
 var SITE_NAME = exports.SITE_NAME = 'dang-thats-delectable';
