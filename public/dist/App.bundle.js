@@ -1153,7 +1153,6 @@ function makeMap(mapDiv) {
 
     autocomplete.addListener('place_changed', function (event) {
         var place = autocomplete.getPlace();
-        input.value = place.formatted_address;
 
         _loadPlaces(map, place.geometry.location.lng(), place.geometry.location.lat()).then(function (places) {
             if (!places.length) return alert('No stores found!');
@@ -1201,7 +1200,6 @@ function typeAhead(search) {
 
     input.on('input', function (e) {
         var searchTerm = _dompurify2.default.sanitize(e.currentTarget.value);
-        console.log(searchTerm);
 
         if (!searchTerm) {
             results.style.display = 'none';

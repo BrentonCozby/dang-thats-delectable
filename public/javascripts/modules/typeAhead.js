@@ -17,7 +17,6 @@ export default function typeAhead(search) {
 
     input.on('input', e => {
         const searchTerm = DOMpurify.sanitize(e.currentTarget.value)
-        console.log(searchTerm)
 
         if(!searchTerm) {
             results.style.display = 'none'

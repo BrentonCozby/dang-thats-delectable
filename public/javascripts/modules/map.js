@@ -118,7 +118,6 @@ export default function makeMap(mapDiv) {
 
     autocomplete.addListener('place_changed', function (event) {
         const place = autocomplete.getPlace()
-        input.value = place.formatted_address
 
         _loadPlaces(map, place.geometry.location.lng(), place.geometry.location.lat()).then(places => {
             if(!places.length)
