@@ -37,10 +37,6 @@ export async function resize(req, res, next) {
     next()
 }
 
-export function homepage(req, res) {
-    res.render('index', {title: 'Home'})
-}
-
 export function addStore(req, res) {
     res.render('editStore', {title: 'Add Store'})
 }

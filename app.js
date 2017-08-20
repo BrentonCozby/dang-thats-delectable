@@ -13,6 +13,7 @@ const routes = require('./routes/index');
 const helpers = require('./helpers');
 const config = require('./config');
 const errorHandlers = require('./handlers/errorHandlers');
+const { PUBLIC_PATH } = require('./config.js')
 
 import './handlers/passport'
 
@@ -24,7 +25,7 @@ app.set('views', path.join(__dirname, 'views')); // this is the folder where we 
 app.set('view engine', 'ejs'); // we use the engine pug, mustache or EJS work great too
 
 // serves up static files from the public folder. Anything in public/ will just be served up as the file it is
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(PUBLIC_PATH, express.static(path.join(__dirname, 'public')));
 
 // Takes the raw requests and turns them into usable properties on req.body
 app.use(bodyParser.json());
