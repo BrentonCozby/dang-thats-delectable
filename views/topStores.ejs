@@ -18,12 +18,12 @@
             <% stores.forEach((store, i) => { %>
             <tr>
                 <td>
-                    <a href="/stores/<%= store.slug %>">
-                        <img src="/uploads/<%= store.photo || 'store.png' %>" width="200" alt="<%= store.name %>">
+                    <a href="<%= c.PUBLIC_PATH %>stores/<%= store.slug %>">
+                        <img src="<%= c.PUBLIC_PATH %>uploads/<%= store.photo || 'store.png' %>" width="200" alt="<%= store.name %>">
                     </a>
                 </td>
                 <td><%= i + 1 %></td>
-                <td><a href="/stores/<%= store.slug %>"><%= store.name %></a></td>
+                <td><a href="<%= c.PUBLIC_PATH %>stores/<%= store.slug %>"><%= store.name %></a></td>
                 <td><%= store.reviews.length %></td>
                 <td><%= Math.round( store.averageRating * 10 ) / 10 %> out of 5</td>
             </tr>

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { $ } from './bling.js'
+import { PUBLIC_PATH } from '../../../config.js' 
 
 const mapOptions = {
     center: {
@@ -59,8 +60,8 @@ function _createMarkers(map, places) {
 
             const html = `
                 <div class="popup">
-                    <a href="/stores/${place.slug}">
-                        <img src="/uploads/${place.photo || 'store.png'}" alt="${place.name}">
+                    <a href="${PUBLIC_PATH}stores/${place.slug}">
+                        <img src="${PUBLIC_PATH}uploads/${place.photo || 'store.png'}" alt="${place.name}">
                         <h4 class="name">${place.name}</h4>
                         <p class="address">${place.location.address}</p>
                     </a>
@@ -92,7 +93,7 @@ function _loadPlaces (map, lng, lat) {
 
     return new Promise((resolve, reject) => {
         axios
-            .get(`/api/stores/near?lng=${lng || -79.842}&lat=${lat || 43.251}`)
+            .get(`${PUBLIC_PATH}api/stores/near?lng=${lng || -79.842}&lat=${lat || 43.251}`)
             .then(res => {
                 resolve(res.data)
             })

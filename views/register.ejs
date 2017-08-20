@@ -6,7 +6,7 @@
 
     <main>
         <%- include('components/messages') %>
-        <form action="/register" method="POST" class="form">
+        <form action="<%= c.PUBLIC_PATH %>register" method="POST" class="form">
             <h2>Register</h2>
             <label for="name">Name</label>
             <input type="text" name="name" id="name"  autofocus>

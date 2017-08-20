@@ -10,7 +10,7 @@
         <ul class="tags">
             <% tags && tags.forEach(tag => { %>
             <li class="tag">
-                <a href="/tags/<%= tag._id %>" class="tag__link <%= (activeTag === tag._id) ? 'tag__link--active' : '' %>">
+                <a href="<%= c.PUBLIC_PATH %>tags/<%= tag._id %>" class="tag__link <%= (activeTag === tag._id) ? 'tag__link--active' : '' %>">
                     <span class="tag__text"><%= tag._id %></span>
                     <span class="tag__count"><%= tag.count %></span>
                 </a>

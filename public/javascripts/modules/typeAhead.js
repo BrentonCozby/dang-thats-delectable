@@ -1,9 +1,10 @@
 import axios from 'axios'
 import DOMpurify from 'dompurify'
+import {PUBLIC_PATH} from '../../../config.js'
 
 function _generateResultsHTML(stores = []) {
     return stores.map(store => `
-        <a href="/stores/${store.slug}" class="search__result">
+        <a href="${PUBLIC_PATH}stores/${store.slug}" class="search__result">
             <strong>${store.name}</strong>
         </a>
     `).join('')
@@ -26,7 +27,7 @@ export default function typeAhead(search) {
         results.style.display = 'block'
 
         axios
-            .get(`/api/search?q=${searchTerm}`)
+            .get(`${PUBLIC_PATH}api/search?q=${searchTerm}`)
             .then(res => {
                 if(res.data.length) {
                     results.innerHTML = _generateResultsHTML(res.data)

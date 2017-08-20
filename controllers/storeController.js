@@ -6,6 +6,7 @@ import jimp from 'jimp'
 import uuid from 'uuid'
 import { Dir } from '../config.js'
 import { resolve } from 'path'
+import { PUBLIC_PATH } from '../config.js'
 
 const multerOptions = {
     storage: multer.memoryStorage(),
@@ -49,7 +50,7 @@ export async function createStore(req, res) {
     req.body.author = req.user._id
     const store = await (new Store(req.body)).save()
     req.flash('success', `Successfully created ${store.name}. Help out this store by leaving a review!`)
-    res.redirect(`/stores/${store.slug}`)
+    res.redirect(PUBLIC_PATH + `stores/${store.slug}`)
 }
 
 const _confirmOwner = (store, user) => {
@@ -79,7 +80,7 @@ export async function getStores(req, res) {
 
     if(!stores.length && skip) {
         req.flash('info', `You asked for page ${page}, but it doesn't exist! So we've put you on the last page.`)
-        res.redirect(`/stores/page/${pages}`)
+        res.redirect(PUBLIC_PATH + `stores/page/${pages}`)
     }
 
     res.render('stores', {title: 'Stores', stores, page, pages, count, path: 'stores' })
@@ -116,8 +117,8 @@ export async function updateStore(req, res) {
         }
     ).exec()
 
-    req.flash('success', `Successfully update <strong>${store.name}</strong>. <a href="/stores/${store.slug}">View Store →</a>`)
-    res.redirect(`/stores/${store._id}/edit`)
+    req.flash('success', `Successfully update <strong>${store.name}</strong>. <a href="${PUBLIC_PATH}stores/${store.slug}">View Store →</a>`)
+    res.redirect(PUBLIC_PATH + `stores/${store._id}/edit`)
 }
 
 export async function getStoresByTag(req, res) {
@@ -217,7 +218,7 @@ export async function getLikes (req, res) {
 
     if(!likedStores.length && skip) {
         req.flash('info', `You asked for page ${page}, but it doesn't exist! So we've put you on the last page.`)
-        res.redirect(`/likes/page/${pages}`)
+        res.redirect(PUBLIC_PATH + `likes/page/${pages}`)
     }
 
     res.render('stores', {

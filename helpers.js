@@ -1,3 +1,5 @@
+import { PUBLIC_PATH } from './config.js'
+
 /*
   This is a file of data and helper functions that we can expose and use in our templating function
 */
@@ -27,9 +29,9 @@ exports.staticMap = ([lng, lat]) => `https://maps.googleapis.com/maps/api/static
 exports.icon = (name) => fs.readFileSync(`./public/images/icons/${name}.svg`);
 
 exports.menu = [
-  { slug: '/stores', title: 'Stores', icon: 'store', },
-  { slug: '/tags', title: 'Tags', icon: 'tag', },
-  { slug: '/top', title: 'Top', icon: 'top', },
-  { slug: '/add', title: 'Add', icon: 'add', },
-  { slug: '/map', title: 'Map', icon: 'map', },
+  { slug: PUBLIC_PATH + 'stores', title: 'Stores', icon: 'store', },
+  { slug: PUBLIC_PATH + 'tags', title: 'Tags', icon: 'tag', },
+  { slug: PUBLIC_PATH + 'top', title: 'Top', icon: 'top', },
+  { slug: PUBLIC_PATH + 'add', title: 'Add', icon: 'add', },
+  { slug: PUBLIC_PATH + 'map', title: 'Map', icon: 'map', },
 ];

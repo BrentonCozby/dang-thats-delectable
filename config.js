@@ -1,7 +1,7 @@
 import { resolve } from 'path'
 
 export const DEV_PATH = __dirname
-export const PUBLIC_PATH = '/'
+export const PUBLIC_PATH = '/dang-thats-delectable/'
 
 export const SITE_TITLE = 'Dang That\'s Delectable!'
 export const SITE_NAME = 'dang-thats-delectable'

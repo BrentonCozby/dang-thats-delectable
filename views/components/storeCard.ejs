@@ -5,7 +5,7 @@
             <% const likedStoreIds = user.likes.map(obj => obj.toString()) %>
             <% const likeClass = (likedStoreIds.includes(store._id.toString())) ? 'like__button--liked' : '' %>
             <div class="store__action store__action--like">
-                <form action="/api/stores/<%= store._id %>/likes" method="POST" class="like">
+                <form action="<%= c.PUBLIC_PATH %>api/stores/<%= store._id %>/likes" method="POST" class="like">
                     <button type="submit" name="like" class="like__button <%= likeClass %>">
                         <%- h.icon('like') %>
                     </button>

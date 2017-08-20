@@ -4,6 +4,7 @@ const User = mongoose.model('User')
 import { randomBytes } from 'crypto'
 import promisify from 'es6-promisify'
 import * as mail from '../handlers/mail.js'
+import { PUBLIC_PATH } from '../config.js'
 
 // need to configure passport to use 'local' or any other passport strategy in handlers/passport.js
 export const login = passport.authenticate('local', {
@@ -16,7 +17,7 @@ export const login = passport.authenticate('local', {
 export function logout(req, res) {
     req.logout()
     req.flash('success', 'You are now logged out.')
-    res.redirect('/')
+    res.redirect(PUBLIC_PATH + '')
 }
 
 export function isLoggedIn(req, res, next) {
@@ -26,7 +27,7 @@ export function isLoggedIn(req, res, next) {
     }
 
     req.flash('error', 'Oops! You must be logged in to do that!')
-    res.redirect('/login')
+    res.redirect(PUBLIC_PATH + 'login')
 }
 
 export async function forgot (req, res) {
@@ -36,14 +37,14 @@ export async function forgot (req, res) {
         // Don't tell the user that no email exists: this would allow bad people to check if
         // someone has an account, and then create one for them if there is no account
         req.flash('success', 'You have been emailed a password reset link!')
-        return res.redirect('/login')
+        return res.redirect(PUBLIC_PATH + 'login')
     }
 
     user.resetPasswordToken = randomBytes(20).toString('hex')
     user.resetPasswordExpires = Date.now() + 3600000 // 1 hour from now
     await user.save()
 
-    const resetURL = `http://${req.headers.host}/account/reset/${user.resetPasswordToken}`
+    const resetURL = `http://${req.headers.host}${PUBLIC_PATH}account/reset/${user.resetPasswordToken}`
     mail.send({
         user,
         subject: 'Password Reset - Dang Thats Delectable',
@@ -52,7 +53,7 @@ export async function forgot (req, res) {
     })
 
     req.flash('success', 'You have been emailed a password reset link!')
-    res.redirect('/login')
+    res.redirect(PUBLIC_PATH + 'login')
 }
 
 export async function reset (req, res) {
@@ -63,7 +64,7 @@ export async function reset (req, res) {
 
     if(!user) {
         req.flash('error', 'Password reset link is invalied or has expired.')
-        return res.redirect('/login')
+        return res.redirect(PUBLIC_PATH + 'login')
     }
 
     res.render('reset', {title: 'Reset Your Password'})
@@ -86,7 +87,7 @@ export async function update (req, res) {
 
     if(!user) {
         req.flash('error', 'Password reset link is invalied or has expired.')
-        return res.redirect('/login')
+        return res.redirect(PUBLIC_PATH + 'login')
     }
 
     const setPassword = promisify(user.setPassword, user)
@@ -102,5 +103,5 @@ export async function update (req, res) {
     await req.login(updatedUser)
     req.flash('success', 'Success! Your password has been reset.')
 
-    res.redirect('/')
+    res.redirect(PUBLIC_PATH + '')
 }

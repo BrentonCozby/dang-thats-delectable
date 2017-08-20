@@ -6,9 +6,9 @@
 
     <div class="single">
         <div class="single__hero">
-            <img src="/uploads/<%= store.photo || 'store.png' %>" alt="<%= store.name %>" class="single__image">
+            <img src="<%= c.PUBLIC_PATH %>uploads/<%= store.photo || 'store.png' %>" alt="<%= store.name %>" class="single__image">
             <h2 class="title title--single">
-                <a href="/stores/<%= store.slug %>"><%= store.name %></a>
+                <a href="<%= c.PUBLIC_PATH %>stores/<%= store.slug %>"><%= store.name %></a>
             </h2>
         </div>
     </div>
@@ -22,7 +22,7 @@
             <ul class="tags">
                 <% store.tags.forEach(tag => { %>
                 <li class="tag">
-                    <a href='/tags/<%= tag %>' class="tag__link">
+                    <a href='<%= c.PUBLIC_PATH %>tags/<%= tag %>' class="tag__link">
                         <span class="tag__text"><%= tag %></span>
                     </a>
                 </li>

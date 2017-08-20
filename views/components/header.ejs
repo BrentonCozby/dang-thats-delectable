@@ -30,7 +30,7 @@
         <% if(user) { %>
 
             <li class="nav__item">
-                <a href="<%= c.PUBLIC_PATH %>likes" class="nav__link <%= currentPath.startsWith('/likes') ? 'nav__link--active' : '' %>">
+                <a href="<%= c.PUBLIC_PATH %>likes" class="nav__link <%= currentPath.startsWith(c.PUBLIC_PATH + 'likes') ? 'nav__link--active' : '' %>">
                     <%- h.icon('like'); %>
                     <span class="like-count">
                         <%= (user.likes) ? user.likes.length : '' %>
@@ -39,7 +39,7 @@
             </li>
 
             <li class="nav__item">
-                <a href="<%= c.PUBLIC_PATH %>logout" class="nav__link <%= currentPath.startsWith('/logout') ? 'nav__link--active' : '' %>">
+                <a href="<%= c.PUBLIC_PATH %>logout" class="nav__link <%= currentPath.startsWith(c.PUBLIC_PATH + 'logout') ? 'nav__link--active' : '' %>">
                     <%- h.icon('logout') %>
                     <span>
                         Logout
@@ -48,7 +48,7 @@
             </li>
 
             <li class="nav__item">
-                <a href="<%= c.PUBLIC_PATH %>account" class="nav__link <%= currentPath.startsWith('/account') ? 'nav__link--active' : '' %>">
+                <a href="<%= c.PUBLIC_PATH %>account" class="nav__link <%= currentPath.startsWith(c.PUBLIC_PATH + 'account') ? 'nav__link--active' : '' %>">
                     <img src="<%= user.gravatar %>" alt="<%= user.name %>" class="avatar">
                 </a>
             </li>
@@ -56,12 +56,12 @@
         <% } else { %>
 
             <li class="nav__item">
-                <a href="/register" class="nav__link <%= currentPath.startsWith('/register') ? 'nav__link--active' : '' %>">
+                <a href="<%= c.PUBLIC_PATH %>register" class="nav__link <%= currentPath.startsWith(c.PUBLIC_PATH + 'register') ? 'nav__link--active' : '' %>">
                     Register
                 </a>
             </li>
             <li class="nav__item">
-                <a href="/login" class="nav__link <%= currentPath.startsWith('/login') ? 'nav__link--active' : '' %>">
+                <a href="<%= c.PUBLIC_PATH %>login" class="nav__link <%= currentPath.startsWith(c.PUBLIC_PATH + 'login') ? 'nav__link--active' : '' %>">
                     Log In
                 </a>
             </li>

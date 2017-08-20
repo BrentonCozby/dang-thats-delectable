@@ -10,7 +10,7 @@
     <label for="photo">Photo</label>
     <input type="file" name="photo" accept="image/*" id="photo">
     <% if(store.photo) { %>
-    <img src="/uploads/<%= store.photo %>" alt="<%= store.name %>" width="200">
+    <img src="<%= c.PUBLIC_PATH %>uploads/<%= store.photo %>" alt="<%= store.name %>" width="200">
     <% } %>
     <label for="address">Address</label>
     <!-- location[address] only works in express -->
