@@ -14,72 +14,72 @@ function isEmpty(obj) {
 // Wrap all async functions in catchErrors
 
 // STORE
-router.get(PUBLIC_PATH + '', catchErrors(storeController.getStores))
-router.get(PUBLIC_PATH + 'add',
+router.get('/', catchErrors(storeController.getStores))
+router.get('/add',
     authController.isLoggedIn,
     storeController.addStore
 )
-router.post(PUBLIC_PATH + 'add',
+router.post('/add',
     storeController.upload,
     catchErrors(storeController.resize),
     catchErrors(storeController.createStore)
 )
-router.post(PUBLIC_PATH + 'update/:id',
+router.post('/update/:id',
     storeController.upload,
     catchErrors(storeController.resize),
     catchErrors(storeController.updateStore)
 )
-router.get(PUBLIC_PATH + 'stores', catchErrors(storeController.getStores))
-router.get(PUBLIC_PATH + 'stores/page/:page', catchErrors(storeController.getStores))
-router.get(PUBLIC_PATH + 'stores/:slug', catchErrors(storeController.getStoreBySlug))
-router.get(PUBLIC_PATH + 'stores/:id/edit', catchErrors(storeController.editStore))
-router.get(PUBLIC_PATH + 'tags', catchErrors(storeController.getStoresByTag))
-router.get(PUBLIC_PATH + 'tags/:tag', catchErrors(storeController.getStoresByTag))
-router.get(PUBLIC_PATH + 'map', storeController.mapPage)
-router.get(PUBLIC_PATH + 'top', catchErrors(storeController.getTopStores))
+router.get('/stores', catchErrors(storeController.getStores))
+router.get('/stores/page/:page', catchErrors(storeController.getStores))
+router.get('/stores/:slug', catchErrors(storeController.getStoreBySlug))
+router.get('/stores/:id/edit', catchErrors(storeController.editStore))
+router.get('/tags', catchErrors(storeController.getStoresByTag))
+router.get('/tags/:tag', catchErrors(storeController.getStoresByTag))
+router.get('/map', storeController.mapPage)
+router.get('/top', catchErrors(storeController.getTopStores))
 
 
 // USER
-router.get(PUBLIC_PATH + 'login', userController.loginForm)
-router.post(PUBLIC_PATH + 'login',authController.login)
-router.get(PUBLIC_PATH + 'register', userController.registerForm)
-router.post(PUBLIC_PATH + 'register',
+router.get('/login', userController.loginForm)
+router.post('/login',authController.login)
+router.get('/register', userController.registerForm)
+router.post('/register',
     userController.validateRegister,
     userController.register,
     authController.login
 )
-router.get(PUBLIC_PATH + 'logout', authController.logout)
-router.get(PUBLIC_PATH + 'likes',
+router.get('/logout', authController.logout)
+router.get('/likes',
     authController.isLoggedIn,
     catchErrors(storeController.getLikes)
 )
-router.get(PUBLIC_PATH + 'likes/page/:page',
+router.get('/likes/page/:page',
     authController.isLoggedIn,
     catchErrors(storeController.getLikes)
 )
-router.post(PUBLIC_PATH + 'reviews/:id',
+router.post('/reviews/:id',
     authController.isLoggedIn,
     catchErrors(reviewController.addReview)
 )
 
 
 // ACCOUNT
-router.get(PUBLIC_PATH + 'account',
+router.get('/account',
     authController.isLoggedIn,
     userController.account
 )
-router.post(PUBLIC_PATH + 'account', catchErrors(userController.updateAccount))
-router.post(PUBLIC_PATH + 'account/forgot', catchErrors(authController.forgot))
-router.get(PUBLIC_PATH + 'account/reset/:token', catchErrors(authController.reset))
-router.post(PUBLIC_PATH + 'account/reset/:token',
+router.post('/account', catchErrors(userController.updateAccount))
+router.post('/account/forgot', catchErrors(authController.forgot))
+router.get('/account/reset/:token', catchErrors(authController.reset))
+router.post('/account/reset/:token',
     authController.confirmPasswords,
     catchErrors(authController.update)
 )
 
 
 // API
-router.get(PUBLIC_PATH + 'api/search', catchErrors(storeController.searchStores))
-router.get(PUBLIC_PATH + 'api/stores/near', catchErrors(storeController.mapStores))
-router.post(PUBLIC_PATH + 'api/stores/:id/likes', catchErrors(storeController.likesStore))
+router.get('/api/search', catchErrors(storeController.searchStores))
+router.get('/api/stores/near', catchErrors(storeController.mapStores))
+router.post('/api/stores/:id/likes', catchErrors(storeController.likesStore))
 
 module.exports = router
