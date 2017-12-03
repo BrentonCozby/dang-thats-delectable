@@ -1,9 +1,9 @@
-SECRET=
-KEY=
-DATABASE=
-MAIL_HOST=
-MAIL_PORT=
-MAIL_USER=
-MAIL_PASS=
-MAP_KEY=
-PORT=
+DATABASE: MLab
+MAIL_USER= mailtrap.io
+MAIL_PASS= mailtrap.io
+MAIL_HOST= mailtrap.io
+MAIL_PORT= mailtrap.io
+PORT=7777
+MAP_KEY= google maps api console
+SECRET= made up
+KEY= made up
